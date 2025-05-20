@@ -1,6 +1,33 @@
 import os
 import threading
-import speech_recognition as sr
+# import speech_recognition as s
+
+import os
+IS_CLOUD = "STREAMLIT_ENV" in os.environ
+
+use_voice_assistant = st.toggle("🎧 Enable Voice Assistant")
+user_input = ""
+
+if use_voice_assistant:
+    if IS_CLOUD:
+        st.warning("🎙 Voice input is not supported on Streamlit Cloud. Please type instead.")
+        user_input = st.chat_input("Type your question here...")
+    else:
+        try:
+            import speech_recognition as sr
+            recognizer = sr.Recognizer()
+            with sr.Microphone() as source:
+                st.info("🎙 Listening...")
+                recognizer.adjust_for_ambient_noise(source)
+                audio = recognizer.listen(source)
+                user_input = recognizer.recognize_google(audio)
+                st.success(f"Detected: {user_input}")
+        except Exception as e:
+            st.error("🎤 Voice recognition failed. Please type instead.")
+            user_input = st.chat_input("Type your question here...")
+else:
+    user_input = st.chat_input("Type your question here...")
+r  # disabled for cloud
 from threading import Thread
 from dotenv import load_dotenv
 from flask import Flask, send_from_directory
