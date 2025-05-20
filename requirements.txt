@@ -24,4 +24,5 @@ replicate
 Groq
 google-generativeai
 streamlit_option_menu
+SpeechRecognition
 
