@@ -25,4 +25,21 @@ Groq
 google-generativeai
 streamlit_option_menu
 SpeechRecognition
+streamlit
+streamlit-option-menu
+streamlit-lottie
+google-generativeai
+langchain
+langchain-groq
+huggingface-hub
+faiss-cpu
+pypdf
+pymupdf
+deep-translator
+reportlab
+openai
+pandas
+requests
+Pillow
+
 
