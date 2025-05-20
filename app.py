@@ -4,8 +4,7 @@ import threading
 
 import os
 IS_CLOUD = "STREAMLIT_ENV" in os.environ
-
-use_voice_assistant = st.toggle("🎧 Enable Voice Assistant")
+use_voice_assistant = st.checkbox("🎧 Enable Voice Assistant")
 user_input = ""
 
 if use_voice_assistant:
